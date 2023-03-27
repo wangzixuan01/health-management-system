@@ -15,9 +15,8 @@
       </p>
       <p>
         <input
-          type="tel"
+          type="text"
           placeholder="请输入姓名"
-          maxlength="11"
           class="phone"
           v-model="state.name"
           v-focus
@@ -25,33 +24,31 @@
         />
       </p>
       <p>
-        <span>请选择性别:</span>
-        <van-radio-group v-model="state.gender"  direction="horizontal">
-          <van-radio name="0">男</van-radio>
-          <van-radio name="1">女</van-radio>
-        </van-radio-group>
-      </p>
-      <p>
         <input
-          type="tel"
-          placeholder="请输入身高"
-          maxlength="11"
+          type="text"
+          placeholder="请输入年龄"
           class="phone"
-          v-model="state.height"
+          v-model="state.age"
           v-focus
           v-blur
         />
       </p>
       <p>
-        <input
-          type="tel"
-          placeholder="请输入体重"
-          maxlength="11"
-          class="phone"
-          v-model="state.weight"
-          v-focus
-          v-blur
+        <van-field
+          v-model="fieldValue"
+          is-link
+          readonly
+          label="性别"
+          placeholder="选择性别"
+          @click="showPicker = true"
         />
+        <van-popup v-model:show="showPicker" round position="bottom">
+          <van-picker
+            :columns="columns"
+            @cancel="showPicker = false"
+            @confirm="onConfirm"
+          />
+        </van-popup>
       </p>
       <p>
         <span class="pwd-ico"></span>
@@ -83,15 +80,20 @@
 </template>
 
 <script lang="ts" scoped>
-import { defineComponent, reactive } from 'vue'
+import { defineComponent, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { focus, blur } from '@/mixins/directive'
 
 import { regist } from '@/api/auth'
 import { validatePhone, validatePassword } from '@/utils/index'
-import { Dialog} from 'vant'
+import { Dialog, Picker, Popup, Field} from 'vant'
 
 export default defineComponent({
+  components: {
+    [Picker.name]: Picker,
+    [Popup.name]: Popup,
+    [Field.name]: Field
+  },
   directives: {
     focus,
     blur
@@ -104,25 +106,22 @@ export default defineComponent({
       name: '',
       age: '',
       gender: '',
-      height: '',
-      weight: '',
       pwd: '',
       confirmPwd: ''
     })
     const columns = [
-      { text: '杭州', value: 'Hangzhou' },
-      { text: '宁波', value: 'Ningbo' },
-      { text: '温州', value: 'Wenzhou' },
-      { text: '绍兴', value: 'Shaoxing' },
-      { text: '湖州', value: 'Huzhou' },
+      { text: '男', value: '0' },
+      { text: '女', value: '1' }
     ];
-    const onConfirm = ({ }) => {
-    };
-    const onChange = ({  }) => {
-    };
-    const onCancel = () => {};
+    let showPicker = ref(false);
+    const fieldValue = ref('');
 
+    const onConfirm = (selectedOptions: any) => {
+      showPicker.value = false;
+      fieldValue.value = selectedOptions.text;
+      state.gender = selectedOptions.value;
 
+    };
     function submitRegist() {
       if (!validatePhone(state.phone)) {
         return Dialog.alert({
@@ -142,7 +141,7 @@ export default defineComponent({
         })
       }
 
-      regist(state.phone, state.pwd)
+      regist(state.phone, state.pwd, state.gender, state.name, state.age)
         .then(res => {
           const { code, message } = res.data
           if (code === 0) {
@@ -163,10 +162,10 @@ export default defineComponent({
     return {
       state,
       columns,
-      onChange,
-      onCancel,
+      fieldValue,
       onConfirm,
-      submitRegist
+      submitRegist,
+      showPicker
     }
   }
 })

@@ -6,6 +6,36 @@ const routes: RouteRecordRaw[] = [
     redirect: '/home'
   },
   {
+    path: '/home',
+    name: 'Home',
+    component: () => import('@/pages/home.vue')
+  },
+  {
+    path: '/breathe',
+    name: 'Breathe',
+    component: () => import('@/pages/breathe/index.vue')
+  },
+  {
+    path: '/body-measure',
+    name: 'BodyMeasure',
+    component: () => import('@/pages/body-measure/index.vue')
+  },
+  {
+    path: '/exercise',
+    name: 'Exercise',
+    component: () => import('@/pages/exercise/index.vue')
+  },
+  {
+    path: '/heart',
+    name: 'Heart',
+    component: () => import('@/pages/heart/index.vue')
+  },
+  {
+    path: '/nutrition',
+    name: 'Nutrition',
+    component: () => import('@/pages/nutrition/index.vue')
+  },
+  {
     path: '/account',
     name: 'AccountIndex',
     component: () => import('@/pages/account/index.vue'),
@@ -33,24 +63,14 @@ const routes: RouteRecordRaw[] = [
     ]
   },
   {
-    path: '/home',
-    name: 'Home',
-    component: () => import('@/pages/home.vue')
-  },
-  {
-    path: '/get-coupon',
-    name: 'GetCoupon',
-    component: () => import('@/pages/get-coupon/index.vue')
-  },
-  {
-    path: '/personal',
-    name: 'Personal',
-    component: () => import('@/pages/personal/index.vue')
-  },
-  {
     path: '/personal-edit',
     name: 'PersonEdit',
     component: () => import('@/pages/personal/personal-edit.vue')
+  },
+  {
+    path: '/personal',
+    name: 'Person',
+    component: () => import('@/pages/personal/index.vue')
   },
   {
     path: '/change-user-thumb',
@@ -66,16 +86,6 @@ const routes: RouteRecordRaw[] = [
     path: '/change-user-sex',
     name: 'ChangeUserSex',
     component: () => import('@/pages/personal/change-user-sex.vue')
-  },
-  {
-    path: '/wechat',
-    name: 'Wechat',
-    component: () => import('@/pages/wechat/index.vue')
-  },
-  {
-    path: '/auth',
-    name: 'Auth',
-    component: () => import('@/pages/wechat/auth.vue')
   }
 ]
 

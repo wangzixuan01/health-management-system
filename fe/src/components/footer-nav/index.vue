@@ -5,13 +5,13 @@
     <div v-if="navName === 'personal'" class="box">
       <router-link tag="a" :to="{ path: '/home' }" class="nav-tag">
         <img
-          src="./images/discountsgrey.png"
+          src="https://search-operate.cdn.bcebos.com/4c9515d9cc5efe92244e9da9bfdcbfca.jpg"
           width="30"
           height="26"
-          alt="全球优惠"
+          alt="健康管理"
           class="tag-ico"
         />
-        <div class="tag-name">全球优惠</div>
+        <div class="tag-name">健康管理</div>
       </router-link>
       <router-link tag="a" :to="{ path: '/personal' }" class="nav-tag this-tag">
         <img
@@ -29,13 +29,13 @@
     <div v-if="navName !== 'personal'" class="box">
       <router-link tag="a" :to="{ path: '/home' }" class="nav-tag this-tag">
         <img
-          src="./images/discountsblue.png"
+          src="https://search-operate.cdn.bcebos.com/4c9515d9cc5efe92244e9da9bfdcbfca.jpg"
           width="30"
           height="26"
-          alt="全球优惠"
+          alt="健康管理"
           class="tag-ico"
         />
-        <div class="tag-name">全球优惠</div>
+        <div class="tag-name">健康管理</div>
       </router-link>
       <router-link tag="a" :to="{ path: '/personal' }" class="nav-tag">
         <img

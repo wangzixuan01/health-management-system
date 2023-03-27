@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import { Toast, Dialog, Loading, Picker, RadioGroup, Radio } from 'vant'
+import { Toast, Dialog, Loading, RadioGroup, Radio } from 'vant'
 
 const app = createApp(App)
 
@@ -16,7 +16,3 @@ app.use(RadioGroup)
 app.use(Radio)
 
 app.mount('#app')
-
-// Vue.prototype.uploadFile = process.env.NODE_ENV === 'development'
-//   ? 'http://localhost:8091/tour/user/changeUserHeadpic'
-//   : 'https://api.0351zhuangxiu.com/tour/user/changeUserHeadpic'

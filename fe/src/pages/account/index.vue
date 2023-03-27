@@ -93,6 +93,6 @@ export default defineComponent({
 .title-img {
   width: 80%;
   display: flex;
-  margin: 40px auto;
+  margin: 20px auto;
 }
 </style>

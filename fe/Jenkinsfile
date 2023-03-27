@@ -2,7 +2,7 @@ pipeline {
 	agent {
 		node {
 			label ""
-			customWorkspace 'workspace/tour-fe/'
+			customWorkspace 'workspace/health-fe/'
 		}
 	}
 

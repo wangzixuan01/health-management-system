@@ -4,7 +4,7 @@ import { AxiosPromise } from 'axios'
 export const getUserInfo = (id: number): AxiosPromise<ResponseData> => {
   return httpRequest.request({
     method: 'get',
-    url: '/tour/user/info',
+    url: '/health/user/info',
     params: { id }
   })
 }

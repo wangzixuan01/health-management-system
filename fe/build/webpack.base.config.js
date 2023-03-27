@@ -1,7 +1,7 @@
 /**
  * webpack 公共配置
- * @author zhaoyiming
- * @since  2019/09/14
+ * @author zhanghan
+ * @since  2023/03/14
  */
 const { merge } = require('webpack-merge')
 const tsImportPluginFactory = require('ts-import-plugin')
