@@ -1,20 +1,20 @@
 module.exports = {
-  presets: [
-    [
-      '@babel/preset-env',
-      {
-        targets: {
-          esmodules: true
-        }
-      }
-    ]
-  ],
-  plugins: [
-    [
-      '@babel/plugin-transform-runtime'
+    presets: [
+        [
+            '@babel/preset-env',
+            {
+                targets: {
+                    esmodules: true
+                }
+            }
+        ]
     ],
-    [
-      'add-module-exports'
+    plugins: [
+        [
+            '@babel/plugin-transform-runtime'
+        ],
+        [
+            'add-module-exports'
+        ]
     ]
-  ]
 }
